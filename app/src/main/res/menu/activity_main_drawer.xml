@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_top_strikers"
+            android:icon="@drawable/trophy"
+            android:title="@string/top_strikers" />
+        <item
+            android:id="@+id/nav_matches"
+            android:icon="@drawable/matches"
+            android:title="@string/matches" />
+        <item
+            android:id="@+id/nav_players"
+            android:icon="@drawable/players"
+            android:title="@string/players" />
+        <item
+            android:id="@+id/nav_videos"
+            android:icon="@drawable/videos"
+            android:title="@string/videos" />
+    </group>
+
+</menu>

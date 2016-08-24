@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Social Soccer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="top_strikers">Top Strikers</string>
+    <string name="matches">Matches</string>
+    <string name="players">Players</string>
+    <string name="videos">Videos</string>
+    <string name="main_title">Social Soccer</string>
+</resources>

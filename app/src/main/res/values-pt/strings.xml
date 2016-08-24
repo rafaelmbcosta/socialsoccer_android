@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Racha do Pio XII</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="top_strikers">Artilheiros</string>
+    <string name="matches">Partidas</string>
+    <string name="players">Jogadores</string>
+    <string name="videos">Videos</string>
+    <string name="main_title">Racha do Pio XII</string>
+</resources>
