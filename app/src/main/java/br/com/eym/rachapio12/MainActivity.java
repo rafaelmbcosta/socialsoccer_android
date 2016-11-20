@@ -1,6 +1,6 @@
 package br.com.eym.rachapio12;
 
-import android.os.AsyncTask;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,8 +12,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +39,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        GetJsonTask jsonTask = new GetJsonTask();
-        jsonTask.execute();
+        String url = getResources().getString(R.string.domain_url)+getResources().getString(R.string.top_strikers_url);
+        getStrikerJson(url, this);
+
+
     }
 
     @Override
@@ -72,19 +83,27 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private class GetJsonTask extends AsyncTask<Integer, Void, String> {
+    private void getStrikerJson(String url, Context context){
 
-        @Override
-        protected String doInBackground(Integer... params) {
-            String json = null;
-            Service ss = new Service();;
-            json = ss.getJSONFromUrl(getResources().getString(R.string.domain_url)+getResources().getString(R.string.top_strikers_url));
-            return json;
-        }
+        RequestQueue queue = Volley.newRequestQueue(this);
+        final TextView hello = (TextView)findViewById(R.id.hello);
 
-        protected void onPostExecute(String json) {
-            TextView hello = (TextView)findViewById(R.id.hello);
-            hello.setText(json);
-        }
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        hello.setText("Response is: "+ response);
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                hello.setText("That didn't work!");
+                error.printStackTrace();
+            }
+        });
+        queue.add(stringRequest);
     }
+
+
 }
